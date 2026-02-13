@@ -8,21 +8,16 @@
 {% block body_block %}
     <h1>Register for Rango</h1>
     {% if registered %}
-        <div class="alert alert-success">
-            <strong>Thank you for registering!</strong>
-        </div>
-        <p>Return to the <a href="{% url 'rango:index' %}">homepage</a>.</p>
+        Rango says: <strong>thank you for registering!</strong><br />
+        <a href="/rango/">Return to the homepage.</a>
     {% else %}
-        <div class="card">
-            <div class="card-body">
-                <form id="user_form" method="post" action="{% url 'rango:register' %}"
-                      enctype="multipart/form-data" class="form">
-                    {% csrf_token %}
-                    {{ user_form.as_p }}
-                    {{ profile_form.as_p }}
-                    <button type="submit" class="btn btn-primary">Register</button>
-                </form>
-            </div>
-        </div>
+        Rango says: <strong>register here!</strong><br />
+        <form id="user_form" method="post" action="/rango/register/"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" name="submit" value="Register" />
+        </form>
     {% endif %}
 {% endblock %}
